@@ -2,7 +2,7 @@
 import motor.motor_asyncio
 from model import Todo
 
-client = motor.motor_asyncio.AsyncIOMotorClient("mongodb://localhost:27017")
+client = motor.motor_asyncio.AsyncIOMotorClient("mongodb+srv://manu816:001986@cluster0.gvodo.mongodb.net/?retryWrites=true&w=majority")
 
 database = client.TodoList
 
@@ -32,9 +32,8 @@ async def create_todo(todo):
 
 async def update_todo(title, description):
     await collection.update_one({"title": title}, {"$set": {"description": description}})
-    document = await collection.find_one("title")
+    document = await collection.find_one({"title": title})
     return document
-
 
 async def remove_todo(title):
     await collection.delete_one({"title": title})

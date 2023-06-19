@@ -46,12 +46,11 @@ async def add_todo(todo: Todo):
 
 
 @app.put("/api/todo/{title}", response_model=Todo)
-async def update_todo(title: str, description: str):
+async def put_todo(title: str, description: str):
     response = await update_todo(title, description)
     if response:
         return response
     raise HTTPException(400, "Something went wrong / Bad request")
-
 
 @app.delete("/api/todo/{title}")
 async def delete_todo(title):
