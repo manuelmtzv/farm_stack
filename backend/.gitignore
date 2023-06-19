@@ -4,3 +4,4 @@ venv/
 __pycache__/
 logs/
 config.ini
+playground.py
